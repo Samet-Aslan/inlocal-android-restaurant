@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.inlocal.restaurantapp.ui.homefragments.ui.home.view.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_user_details"
+            app:destination="@id/navigation_user_details" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_res_menu"
+            app:destination="@id/navigation_res_menu" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_view_story"
+            app:destination="@id/navigation_view_story" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_comment"
+            app:destination="@id/navigation_comment" />
+        <action
+            android:id="@+id/action_navigation_home_to_menuDetails"
+            app:destination="@id/menuDetails" />
+
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_bookings"
+            app:destination="@id/navigation_bookings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_menulist"
+        android:name="com.inlocal.restaurantapp.ui.homefragments.ui.menulist.view.MenuListFragment"
+        tools:layout="@layout/fragment_menulist" />
+
+    <fragment
+        android:id="@+id/navigation_orderList"
+        android:name="com.inlocal.restaurantapp.ui.homefragments.ui.orderdelivery.view.OrderDeliveryFragment"
+        tools:layout="@layout/activity_order_list" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.inlocal.restaurantapp.ui.homefragments.ui.profile.view.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_favoruites"
+            app:destination="@id/navigation_favorites" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_bookings"
+        android:name="com.inlocal.restaurantapp.ui.homefragments.ui.bookinglist.view.BookingListFragment"
+        tools:layout="@layout/fragment_booking_list"></fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.inlocal.restaurantapp.ui.notifications.view.NotificationsActivity"
+        tools:layout="@layout/activity_notifications" >
+        <action
+            android:id="@+id/action_navigation_notification_to_navigation_comment"
+            app:destination="@id/navigation_comment" />
+        <action
+            android:id="@+id/action_navigation_notification_to_navigation_bookings"
+            app:destination="@id/navigation_bookings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_user_details"
+        android:name="com.inlocal.restaurantapp.ui.userdetails.view.UserDetailsActivity"
+        tools:layout="@layout/activity_user_details">
+        <action
+            android:id="@+id/action_navigation_user_details_to_navigation_tagged_photos"
+            app:destination="@id/navigation_tagged_photos" />
+        <action
+            android:id="@+id/action_navigation_user_details_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_tagged_photos"
+        android:name="com.inlocal.restaurantapp.ui.taggedphotos.view.TaggedPhotosActivity"
+        tools:layout="@layout/activity_tagged_photos">
+        <action
+            android:id="@+id/action_navigation_tagged_photos_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+        <action
+            android:id="@+id/action_navigation_tagged_photos_to_navigation_res_menu"
+            app:destination="@id/navigation_res_menu" />
+        <action
+            android:id="@+id/action_navigation_tagged_photos_to_navigation_view_story"
+            app:destination="@id/navigation_view_story" />
+        <action
+            android:id="@+id/action_navigation_tagged_photos_to_navigation_comment"
+            app:destination="@id/navigation_comment" />
+
+        <action
+            android:id="@+id/action_navigation_tagged_photos_to_menuDetails"
+            app:destination="@id/menuDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_restaurant_details"
+        android:name="com.inlocal.restaurantapp.ui.restaurantdetails.view.RestaurantDetailsActivity"
+        tools:layout="@layout/activity_restaurant_details">
+        <action
+            android:id="@+id/action_navigation_restaurant_details_to_navigation_tagged_photos"
+            app:destination="@id/navigation_tagged_photos" />
+        <action
+            android:id="@+id/action_navigation_restaurant_details_to_navigation_res_menu"
+            app:destination="@id/navigation_res_menu" />
+        <action
+            android:id="@+id/action_navigation_restaurant_details_to_navigation_restro_info"
+            app:destination="@id/navigation_restro_info" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_res_menu"
+        android:name="com.inlocal.restaurantapp.ui.restaurantmenu.view.RestaurantMenuActivity"
+        tools:layout="@layout/activity_restaurant_menu" >
+        <action
+            android:id="@+id/action_navigation_res_menu_to_menuDetails"
+            app:destination="@id/menuDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_restro_info"
+        android:name="com.inlocal.restaurantapp.ui.restauruntinfo.view.RestuarantInfoActivity"
+        tools:layout="@layout/activity_restaurunt_info" />
+    <fragment
+        android:id="@+id/navigation_view_story"
+        android:name="com.inlocal.restaurantapp.ui.viewstory.view.ViewStoryActivity"
+        tools:layout="@layout/activity_view_story" >
+        <action
+            android:id="@+id/action_navigation_view_story_to_navigation_restaurant_menu_details"
+            app:destination="@id/menuDetails" />
+
+        <action
+            android:id="@+id/action_navigation_view_story_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+        <action
+            android:id="@+id/action_navigation_view_story_to_navigation_user_details"
+            app:destination="@id/navigation_user_details" />
+        <action
+            android:id="@+id/action_navigation_view_story_to_navigation_res_menu"
+            app:destination="@id/navigation_res_menu" />
+    </fragment>
+
+    <fragment android:id="@+id/navigation_comment"
+        tools:layout="@layout/activity_comment"
+        android:name="com.inlocal.restaurantapp.ui.comment.view.CommentActivity">
+        <action
+            android:id="@+id/action_navigation_comment_to_navigation_restaurant_details"
+            app:destination="@id/navigation_restaurant_details" />
+        <action
+            android:id="@+id/action_navigation_comment_to_navigation_user_details"
+            app:destination="@id/navigation_user_details" />
+        <action
+            android:id="@+id/action_navigation_comment_to_navigation_res_menu"
+            app:destination="@id/navigation_res_menu" />
+        <action
+            android:id="@+id/action_navigation_comment_to_navigation_menu_details"
+            app:destination="@id/menuDetails" />
+
+    </fragment>
+    <fragment android:id="@+id/menuDetails"
+        android:name="com.inlocal.restaurantapp.ui.restaurantmenudetails.view.RestaurantMenuDetailsActivity"
+        tools:layout="@layout/activity_restaurant_menu_details">
+
+        <action
+            android:id="@+id/action_navigation_menu_details_to_taggedFragment"
+            app:destination="@id/navigation_tagged_photos"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/navigation_favorites"
+        tools:layout="@layout/activity_favorites"
+        android:name="com.inlocal.restaurantapp.ui.favorites.view.FavoritesActivity">
+
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_comment"
+            app:destination="@id/navigation_comment" />
+
+    </fragment>
+
+
+
+
+
+
+
+
+</navigation>

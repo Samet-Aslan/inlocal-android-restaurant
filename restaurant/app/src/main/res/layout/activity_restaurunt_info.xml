@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.editprofile.model.getProfile.RestaurantDetails" />
+
+        <variable
+            name="restData"
+            type="com.inlocal.restaurantapp.ui.editprofile.model.getProfile.Data" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.restauruntinfo.viewmodel.RestuarantInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/topView"
+            layout="@layout/back_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerHostel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewPagerHostel"
+                    app:layout_constraintEnd_toEndOf="@+id/viewPagerHostel"
+                    app:layout_constraintStart_toStartOf="@+id/viewPagerHostel"
+                    app:tabBackground="@drawable/tab_layout_selector"
+                    app:tabGravity="center"
+                    app:tabIndicator="@null"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMaxWidth="@dimen/_10sdp"
+                    app:tabMode="fixed"
+                    app:tabPaddingEnd="6dp"
+                    app:tabPaddingStart="6dp" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                    android:id="@+id/tvRestName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@{data.description}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPagerHostel" />
+
+                <ImageView
+                    android:id="@+id/ivLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAddress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvAddress" />
+
+                <ImageView
+                    android:id="@+id/ivEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEmail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvEmail" />
+
+                <ImageView
+                    android:id="@+id/ivMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:src="@drawable/ic_mobile"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMobile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvMobile" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/br1"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="@dimen/_1sdp"
+                    app:barrierDirection="end"
+                    app:constraint_referenced_ids="ivLocation" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/br1"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRestName" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{data.email}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@id/tvAddress"
+                    app:layout_constraintStart_toStartOf="@+id/tvAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{data.phone.number}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@id/tvAddress"
+                    app:layout_constraintStart_toStartOf="@+id/tvAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/tvOpeningHours"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/opening_hours"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMobile" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutWorkingHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/bg_rounded_white_gray_border"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOpeningHours">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvList"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:layout_width="match_parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/tvDeliveryCharges"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/delivery_charges"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutWorkingHours" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvDeliveryChargesValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@{data.deliveryCharges+``}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutWorkingHours" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvDeliveryNote"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="@{data.deliveryNote==null?View.GONE:View.VISIBLE}"
+                    android:text="@{`Delivery Note : `+data.deliveryNote}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDeliveryChargesValue" />
+
+
+
+                <com.inlocal.restaurantapp.custom.GlideImageView
+                    android:id="@+id/ivMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDeliveryNote" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

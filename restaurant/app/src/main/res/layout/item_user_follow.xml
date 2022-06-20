@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.commonmodel.StoryItem" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+            android:layout_width="@dimen/_60sdp"
+            android:id="@+id/ivCoverImage"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="@dimen/_5sdp" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxWidth="@dimen/_70sdp"
+            android:singleLine="true"
+            android:text="@{data.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp" />
+    </LinearLayout>
+</layout>

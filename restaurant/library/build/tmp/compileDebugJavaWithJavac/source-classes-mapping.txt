@@ -1,0 +1,11 @@
+jp/shts/android/storiesprogressview/StoriesProgressView.java
+ jp.shts.android.storiesprogressview.StoriesProgressView
+ jp.shts.android.storiesprogressview.StoriesProgressView$1
+ jp.shts.android.storiesprogressview.StoriesProgressView$StoriesListener
+jp/shts/android/storiesprogressview/BuildConfig.java
+ jp.shts.android.storiesprogressview.BuildConfig
+jp/shts/android/storiesprogressview/PausableProgressBar.java
+ jp.shts.android.storiesprogressview.PausableProgressBar
+ jp.shts.android.storiesprogressview.PausableProgressBar$1
+ jp.shts.android.storiesprogressview.PausableProgressBar$Callback
+ jp.shts.android.storiesprogressview.PausableProgressBar$PausableScaleAnimation

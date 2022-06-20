@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488583146789",
+    "project_id": "model-gearing-316708",
+    "storage_bucket": "model-gearing-316708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488583146789:android:727b35c2ea05fe13283ecc",
+        "android_client_info": {
+          "package_name": "com.inlocal.restaurantapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488583146789-9nquaaevtijhsv4n2rirhe6ihvqte0k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu_H33j7BrElfwt_afTrIKOJX-3tUeuOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488583146789-9nquaaevtijhsv4n2rirhe6ihvqte0k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.favorites.viewmodel.FavoritesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.followers.view.FollowersActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <FrameLayout
+            android:id="@+id/llTab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/black"
+                app:riv_corner_radius="@dimen/_5sdp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:weightSum="2">
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@{vm.type==1?@drawable/blue_corner_radius_button:null}"
+                    android:gravity="center"
+                    android:onClick="@{(v)->vm.changeType(1)}"
+                    android:text="@string/restaurant_post"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:textAllCaps="true" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@{vm.type==2?@drawable/blue_corner_radius_button:null}"
+                    android:gravity="center"
+                    android:onClick="@{(v)->vm.changeType(2)}"
+                    android:text="@string/user_s_post"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:textAllCaps="true" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:visibility="@{vm.type==1?View.VISIBLE:View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llTab"
+            app:spanCount="2"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_image" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvNoRecord"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/no_record_found"
+            android:textColor="@color/gray5"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llTab"
+            app:spanCount="2"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_image" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerUser"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:visibility="@{vm.type==2?View.VISIBLE:View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llTab"
+            app:spanCount="2"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

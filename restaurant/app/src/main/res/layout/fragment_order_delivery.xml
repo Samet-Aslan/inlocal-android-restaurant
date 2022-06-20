@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.homefragments.ui.orderdelivery.viewmodel.OrderDeliveryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTime"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/lightGrey"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivMule"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:background="@drawable/ic_clock"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivMule"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:id="@+id/tvTimerFirst"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="19:"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivMule"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:id="@+id/tvTimerSecond"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="02:"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tvTimerFirst"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:id="@+id/tvTimerThird"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="05"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tvTimerFirst"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:id="@+id/frameButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@id/cardTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardTime"
+            app:layout_constraintTop_toTopOf="@id/cardTime">
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:layout_marginVertical="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/bg_blue_corder_radius"
+                android:gravity="center"
+                android:onClick="@{(v)->vm.changeData()}"
+                android:text="@{vm.listType==`delivery`?@string/dine_in:@string/delivery}"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:id="@+id/txtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_corner_radius_button"
+                android:paddingHorizontal="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_1sdp"
+                android:text="0"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp"
+                android:visibility="gone" />
+        </FrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:visibility="@{vm.listType==`delivery` ?View.VISIBLE:View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameButton"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_delivery_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDineIn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:visibility="@{vm.listType==`dine_in` ?View.VISIBLE:View.GONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameButton"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_dine_in" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

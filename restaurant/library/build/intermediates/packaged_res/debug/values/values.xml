@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray_scale">#8affffff</color>
+    <color name="primary">#1DA1F2</color>
+    <color name="progress_max_active">@color/white</color>
+    <color name="progress_primary">@color/primary</color>
+    <color name="progress_secondary">@color/gray_scale</color>
+    <color name="white">#fff</color>
+    <dimen name="progress_bar_height">2dp</dimen>
+    <declare-styleable name="StoriesProgressView">
+        <attr format="integer|reference" name="progressCount"/>
+    </declare-styleable>
+</resources>

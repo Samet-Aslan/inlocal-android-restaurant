@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.addcategory.viewmodel.AddCategoryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.addcategory.view.AddCategoryActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <LinearLayout
+            android:id="@+id/llContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/gray_circular_assigned_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_menu_category"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text=""
+                    android:id="@+id/tvMenuName"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/black"
+                    android:hint="@string/add_category_name"
+                    android:padding="@dimen/_10sdp" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!--
+        android:enabled="@{vm.cateName.equals(``)?false:vm.cateName.equals(``)?false:true}"
+            android:onClick="@{(v) -> vm.addCategory(v)}"-->
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+            android:id="@+id/btnSave"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@drawable/blue_corner_radius_button"
+            android:text="@string/save"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llContent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

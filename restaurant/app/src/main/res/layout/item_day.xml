@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.commonmodel.OpeningHoursItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<CheckBox
+            android:id="@+id/checkboxDay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:button="@drawable/checkbox_layout"
+            android:checked="@{data.isOpen.equalsIgnoreCase(`1`)?true:false}"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_5sdp"
+            android:text="@{data.weekdayName}"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/g1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/checkboxDay"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:background="@drawable/ic_unselected"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvData"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:text="@{data.weekdayName}"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/g1"
+            app:layout_constraintStart_toEndOf="@+id/checkboxDay"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g1"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/g1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:id="@+id/edtStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_profile_bg"
+                android:drawableEnd="@drawable/ic_clock"
+                android:drawableTint="@color/primary"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toStartOf="@id/edtEnd"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:id="@+id/edtEnd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/edt_profile_bg"
+                android:drawableEnd="@drawable/ic_clock"
+                android:drawableTint="@color/primary"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/edtStart"
+                app:layout_constraintTop_toTopOf="@id/edtStart" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

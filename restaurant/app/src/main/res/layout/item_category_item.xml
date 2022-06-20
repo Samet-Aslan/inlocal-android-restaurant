@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.commonmodel.MenuItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/gray_circular_assigned_bg"
+        android:padding="@dimen/_5sdp">
+
+        <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+            android:id="@+id/imgItem"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="@dimen/_5sdp" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+            android:id="@+id/txtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_1sdp"
+            android:text="@{data.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgItem"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_2sdp"
+            android:text="@{data.description}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_7ssp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/txtName"
+            app:layout_constraintTop_toBottomOf="@id/txtName" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+            android:id="@+id/txtPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_1sdp"
+            android:text="@{`€`+data.price}"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_7ssp"
+            app:layout_constraintEnd_toStartOf="@+id/imgEdit"
+            app:layout_constraintStart_toStartOf="@id/txtName"
+            app:layout_constraintBottom_toBottomOf="@+id/imgEdit" />
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/ic_cross_edit"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toStartOf="@+id/imgDelete"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_delete_black_new"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

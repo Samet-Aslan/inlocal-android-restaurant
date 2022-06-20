@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_bg_for_bottom_dialog"
+        android:orientation="vertical">
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/block"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/viewBlock"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#50000000"
+            android:visibility="gone" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/report"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp" />
+
+        <View
+            android:id="@+id/viewReport"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="#50000000" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/share"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp" />
+
+        <View
+            android:id="@+id/viewShare"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="#50000000" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/cancel"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_10ssp" />
+
+    </LinearLayout>
+</layout>

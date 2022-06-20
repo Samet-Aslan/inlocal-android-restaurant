@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp">
+
+        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/serving_sizes_you_offer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivEdit"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/ic_edit_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/layoutList"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/layoutList"
+            android:background="@drawable/gray_assigned_bg"
+            android:padding="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtName">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerItem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="7"
+                tools:listitem="@layout/item_custome" />
+
+            <LinearLayout
+                android:id="@+id/llAddItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/white_corner_radius_button"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerItem">
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/add_another"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_8ssp"
+                    />
+
+                <ImageView
+                    android:id="@+id/icAddItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:src="@drawable/ic_add_cat" />
+            </LinearLayout>
+
+            <!--<View
+                android:id="@+id/view_offset_helper"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llAddItem" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                android:id="@+id/txtEnterPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_price"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="@id/edtPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/edtPrice" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                android:id="@+id/edtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_profile_bg"
+                android:hint="@string/enter_price"
+                android:visibility="gone"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
+                android:maxLength="4"
+                android:imeOptions="actionDone"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/txtEnterPrice"
+                app:layout_constraintTop_toBottomOf="@id/view_offset_helper" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

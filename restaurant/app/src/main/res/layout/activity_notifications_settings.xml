@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.InputType" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.notificationssettings.viewmodel.NotificationSettingsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.notificationssettings.view.NotificationsSettingsActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/posts"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/tooglePosts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.post.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setPostChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Stories"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleStories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.stories.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setStoriesChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="gone"
+                            android:id="@+id/viewStories"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleStories"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleStories"
+                            app:layout_constraintTop_toTopOf="@+id/toogleStories"
+                            app:layout_constraintStart_toStartOf="@+id/toogleStories"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Comments"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleComments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.comments.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setCommentsChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:id="@+id/viewComments"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleComments"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleComments"
+                            app:layout_constraintTop_toTopOf="@+id/toogleComments"
+                            app:layout_constraintStart_toStartOf="@+id/toogleComments"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Followers"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleFollowers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.followers.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setFollowersChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:id="@+id/viewFollowers"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleFollowers"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleFollowers"
+                            app:layout_constraintTop_toTopOf="@+id/toogleFollowers"
+                            app:layout_constraintStart_toStartOf="@+id/toogleFollowers"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Likes"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleLikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.likes.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setLikesChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:id="@+id/viewLikes"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleLikes"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleLikes"
+                            app:layout_constraintTop_toTopOf="@+id/toogleLikes"
+                            app:layout_constraintStart_toStartOf="@+id/toogleLikes"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Order"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleOrder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.orders.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setOrdersChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:id="@+id/viewOrder"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleOrder"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleOrder"
+                            app:layout_constraintTop_toTopOf="@+id/toogleOrder"
+                            app:layout_constraintStart_toStartOf="@+id/toogleOrder"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Booking"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/toogleBooking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.bookings.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setBookingsChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:id="@+id/viewBookings"
+                            app:layout_constraintBottom_toBottomOf="@+id/toogleBooking"
+                            app:layout_constraintEnd_toEndOf="@+id/toogleBooking"
+                            app:layout_constraintTop_toTopOf="@+id/toogleBooking"
+                            app:layout_constraintStart_toStartOf="@+id/toogleBooking"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:elevation="@dimen/_2sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/Payment"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Switch
+                            android:id="@+id/tooglePayments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:checked="@{vm.payments.equalsIgnoreCase(`1`)?true:false}"
+                            android:onCheckedChanged="@{(compoundButton, checked) ->vm.setPaymentsChnaged(compoundButton, checked)}"
+                            android:switchMinWidth="0dp"
+                            android:thumb="@drawable/switch_thumb"
+                            android:track="@drawable/switch_track_custom"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/blue_corner_radius_button"
+                    android:text="@string/save"
+                    android:onClick="@{(v) -> vm.updateNotificationSettings(v)}"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardNotification" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

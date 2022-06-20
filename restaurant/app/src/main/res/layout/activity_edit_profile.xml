@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.editprofile.model.getProfile.RestaurantDetails" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.editprofile.viewmodel.EditProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.editprofile.view.EditProfileActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp">
+
+                <FrameLayout
+                    android:id="@+id/flTop"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_170sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_125sdp">
+
+                        <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+                            android:id="@+id/imgCover"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_120sdp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_cover"
+                            app:riv_corner_radius_top_left="@dimen/_10sdp"
+                            app:riv_corner_radius_top_right="@dimen/_10sdp" />
+
+                        <ImageView
+                            android:id="@+id/coverimgEdit"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="@dimen/_50sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/ic_home_camera"
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="@dimen/_1sdp" />
+                    </RelativeLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="@dimen/_30sdp">
+
+                        <com.inlocal.restaurantapp.custom.GlideCircleImageView
+                            android:id="@+id/imgUser"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_60sdp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:src="@drawable/ic_res_logo"
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="@dimen/_1sdp" />
+
+                        <ImageView
+                            android:id="@+id/imgEdit"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:layout_gravity="bottom|end"
+                            android:src="@drawable/ic_home_camera"
+                            app:civ_border_color="@color/white"
+                            app:civ_border_width="@dimen/_1sdp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_counts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                                    android:id="@+id/tvPostCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{(data.postsCounter+``).equalsIgnoreCase(`null`)?`0`:data.postsCounter+``}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Posts"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llInsight"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                                    android:id="@+id/tvInsight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{(data.insightCounter+``).equalsIgnoreCase(`null`)?`0`:data.insightCounter+``}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Insight"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:id="@+id/llFollowers"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                                    android:id="@+id/tvFollowers"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{(data.followers+``).equalsIgnoreCase(`null`)?`0`:data.followers+``}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/followers"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llFollowings"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                                    android:id="@+id/tvFollowing"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{(data.followings+``).equalsIgnoreCase(`null`)?`0`:data.followings+``}"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+
+                                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/following"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10ssp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                </FrameLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/restaurant_email_address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toStartOf="@id/txtPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/flTop" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="@string/restaurant_phone_number"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txtEmail"
+                    app:layout_constraintTop_toTopOf="@id/txtEmail" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:enabled="false"
+                    android:editable="false"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/edt_profile_bg"
+                    android:hint="@string/enter_email_address"
+                    android:inputType="textEmailAddress"
+                    android:focusedByDefault="false"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.email}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toStartOf="@id/edtPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtEmail" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_profile_bg"
+                    android:hint="@string/enter_phone_number"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.phone}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/edtEmail"
+                    app:layout_constraintTop_toTopOf="@id/edtEmail" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/restaurant_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toStartOf="@id/txtPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edtEmail" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="@string/category"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txtName"
+                    app:layout_constraintTop_toTopOf="@id/txtName" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/edt_profile_bg"
+                    android:hint="@string/enter_name"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toStartOf="@id/edtCate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCategory" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/edtCate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_profile_bg"
+                    android:inputType="text"
+                    android:clickable="false"
+                    android:editable="false"
+                    android:focusableInTouchMode="false"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.category}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/edtName"
+                    app:layout_constraintTop_toTopOf="@id/edtName" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="Restaurant Address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edtName" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/description"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtAddressValue" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/txtDescValue"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/edt_profile_bg"
+                    android:inputType="textMultiLine"
+                    android:gravity="start"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.description}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/txtDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtDeliveryCharges"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/delivery_charges"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtDescValue" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/txtDeliveryChargesValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_profile_bg"
+                    android:inputType="text"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:text="@={vm.deliveryCharges}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/txtDeliveryCharges"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDeliveryCharges" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtDeliveryNote"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/delivery_note"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtDeliveryChargesValue" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/txtDeliveryNoteValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_profile_bg"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@={vm.deliveryNote}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/txtDeliveryNote"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDeliveryNote" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtAvail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="@string/availability"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtName"
+                    app:layout_constraintTop_toBottomOf="@id/txtDeliveryNoteValue" />
+
+                <LinearLayout
+                    android:id="@+id/llAvail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/gray_assigned_bg"
+                    android:padding="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtAvail">
+
+                   <!-- <CheckBox
+                        android:id="@+id/cbReservation"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:button="@drawable/checkbox_layout"
+                        android:checked="false"
+                        android:visibility="gone"
+                        android:onCheckedChanged="@{(compoundButton, checked) ->vm.setIsEatInside(compoundButton, checked)}"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />-->
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/cbReservation"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/ic_unselected"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/reservation"/>
+
+                    <!--<CheckBox
+                        android:id="@+id/cbDelivery"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:button="@drawable/checkbox_layout"
+                        android:checked="false"
+                        android:onCheckedChanged="@{(compoundButton, checked) ->vm.setIsDeliverable(compoundButton, checked)}"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />-->
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/cbDelivery"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/ic_unselected"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/delivery"/>
+                </LinearLayout>
+
+
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/txtAddressValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@={vm.address}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:focusable="false"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:focusableInTouchMode="false"
+                    android:background="@drawable/edt_profile_bg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtAddress"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtServ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtName"
+                    app:layout_constraintTop_toBottomOf="@id/llAvail" />
+
+                <LinearLayout
+                    android:id="@+id/llDatTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/gray_assigned_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtServ">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/itemDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:spanCount="4"
+                        tools:itemCount="7"
+                        tools:listitem="@layout/item_day" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/black" />
+
+                    <LinearLayout
+                        android:id="@+id/llAddItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/white_corner_radius_button"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_5sdp">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:text="@string/add_time"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_8ssp"
+                            app:textAllCaps="true" />
+
+                        <ImageView
+                            android:id="@+id/icAddItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:src="@drawable/ic_add_cat" />
+                    </LinearLayout>
+
+                    <!-- <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:id="@+id/txtOpenTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="@string/opening_time"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintEnd_toStartOf="@id/txtCloseTime"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:id="@+id/txtCloseTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:text="@string/closing_time"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/txtOpenTime"
+                            app:layout_constraintTop_toTopOf="@id/txtOpenTime" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <include
+                        android:id="@+id/itemTimeMon"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimetues"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimeWed"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimeThurs"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimeFri"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimeSat"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+                    <include
+                        android:id="@+id/itemTimeSun"
+                        android:visibility="gone"
+                        layout="@layout/item_time" />
+
+
+                   <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/_20sdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+                </LinearLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:id="@+id/btSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:background="@drawable/login_button_selector"
+                    android:text="@string/save"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llDatTime" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+<!--    android:enabled="@{vm.name!=``?false: vm.email!=`` ?false: vm.phone!=``?false: vm.category!=``?false:true}"-->

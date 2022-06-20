@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.homefragments.ui.bookinglist.model.Reservation" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/gray_circular_assigned_bg"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+            android:id="@+id/frameIcon"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="@dimen/_2sdp" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_8sdp"
+            android:text="Booking Date and Time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/bg_white_rounded"
+            android:paddingStart="@dimen/_3sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingEnd="@dimen/_2sdp"
+            android:text=""
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDateTime" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:drawablePadding="@dimen/_5sdp"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTime" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+            android:id="@+id/txtUseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@{data.customer.fullname}"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toEndOf="@id/frameIcon"
+            app:layout_constraintTop_toBottomOf="@+id/llBooking" />
+
+        <LinearLayout
+            android:id="@+id/llBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/bg_white_rounded"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/_6sdp"
+            app:layout_constraintStart_toEndOf="@id/frameIcon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/booking_id"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{` `+data.id}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@id/frameIcon"
+            app:layout_constraintTop_toBottomOf="@id/txtUseName">
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_of_guests"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{` `+data.noOfGuest}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+        </LinearLayout>
+
+
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:layout_width="0dp"
+            android:id="@+id/llTips"
+            android:layout_height="wrap_content"
+            android:text="@{@string/notes+` `+((` `+data.instructions).trim().equalsIgnoreCase(`null`)?`-`:` `+data.instructions)}"
+            android:textColor="@color/black"
+            android:visibility="@{(` `+data.instructions).trim().equalsIgnoreCase(`null`)?View.GONE:data.instructions.toString().equalsIgnoreCase(``)?View.GONE:View.VISIBLE}"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/frameIcon"
+            app:layout_constraintTop_toBottomOf="@id/frameIcon"
+            android:textSize="@dimen/_8ssp" />
+
+        <!--<LinearLayout
+            android:id="@+id/llTips"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:visibility="@{@string/notes+` `+(` `+data.instructions).trim().equalsIgnoreCase(`null`)?View.GONE:data.instructions.toString().equalsIgnoreCase(``)?View.GONE:View.VISIBLE}"
+            app:layout_constraintEnd_toStartOf="@id/txtPrice"
+            app:layout_constraintStart_toStartOf="@id/frameIcon"
+            app:layout_constraintTop_toBottomOf="@id/frameIcon">
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notes"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{(` `+data.instructions).trim().equalsIgnoreCase(`null`)?`-`:` `+data.instructions}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+        </LinearLayout>-->
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtAccpet"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/blue_corner_radius_button"
+            android:drawableStart="@drawable/ic_accept"
+            android:drawablePadding="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="@string/accept"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toStartOf="@id/txtReject"
+            app:layout_constraintTop_toBottomOf="@id/llTips" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtReject"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/red_corner_radius_button"
+            android:drawableStart="@drawable/ic_cross"
+            android:drawablePadding="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="@string/reject"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llTips" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

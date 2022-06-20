@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.homefragments.ui.orderdelivery.model.DeliveryOrderItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/gray_circular_assigned_bg"
+        android:paddingHorizontal="@dimen/_5sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp">
+
+        <FrameLayout
+            android:id="@+id/frameIcon"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtPrice">
+
+            <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                android:id="@+id/txtTable"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/blue_corner_radius_button"
+                android:paddingHorizontal="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_1sdp"
+                android:text="@{data.tableNo+``}"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:id="@+id/txtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_corner_radius_button"
+                android:paddingHorizontal="@dimen/_6sdp"
+                android:paddingVertical="@dimen/_2sdp"
+                android:visibility="@{data.orderItemsCount>0?View.VISIBLE:View.GONE}"
+                android:text="@{data.orderItemsCount+``}"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp" />
+        </FrameLayout>
+
+
+        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+            android:id="@+id/txtUseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/users"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toEndOf="@id/frameIcon"
+            app:layout_constraintTop_toTopOf="@id/frameIcon" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+            android:id="@+id/txtUseCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@{data.noOfGuest+``}"
+            android:background="@drawable/white_corner_radius_button"
+            android:textColor="@color/black"
+            android:paddingHorizontal="@dimen/_7sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toEndOf="@id/txtUseName"
+            app:layout_constraintTop_toTopOf="@id/frameIcon" />
+        <LinearLayout
+            android:id="@+id/llTips"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/frameIcon"
+            app:layout_constraintTop_toBottomOf="@id/txtUseName">
+
+            <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_id"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_corner_radius_button"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="@{data.id+``}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="3"
+                android:visibility="gone"
+                tools:itemCount="4"
+                android:layout_marginEnd="@dimen/_10sdp"
+                tools:listitem="@layout/item_customization" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

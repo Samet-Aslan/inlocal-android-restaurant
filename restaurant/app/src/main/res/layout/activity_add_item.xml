@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.InputType" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.additem.viewmodel.AddItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.additem.view.AddItemActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llUpload"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gray_circular_assigned_bg"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/flUploadImage"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+                            android:id="@+id/imgItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone"
+                            app:riv_corner_radius="@dimen/_2sdp" />
+
+                        <FrameLayout
+                            android:id="@+id/flAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/white_corner_radius_button">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_upload_item" />
+                        </FrameLayout>
+                    </FrameLayout>
+
+
+                    <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                        android:id="@+id/txtPhoneNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="@string/add_item"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toEndOf="@id/flUploadImage"
+                        app:layout_constraintTop_toTopOf="@id/flUploadImage" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlPhoneNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/white_corner_radius_button"
+                        android:padding="@dimen/_7sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/txtPhoneNo"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhoneNo">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="@string/enter_menu_name"
+                            android:inputType="textCapSentences"
+                            android:onTextChanged="@{vm::itemNameChanged}"
+                            android:text="@={vm.itemName}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp" />
+                    </RelativeLayout>
+
+                    <!-- <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                         android:id="@+id/txtErrorPhoneNo"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/_2sdp"
+                         android:textColor="@color/red"
+                         android:textSize="@dimen/_8ssp"
+                         app:layout_constraintStart_toStartOf="@id/rlPhoneNo"
+                         app:layout_constraintTop_toBottomOf="@id/rlPhoneNo" />-->
+
+                    <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                        android:id="@+id/txtPsw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintStart_toStartOf="@id/rlPhoneNo"
+                        app:layout_constraintTop_toBottomOf="@id/rlPhoneNo" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlPsw"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/white_corner_radius_button"
+                        android:padding="@dimen/_7sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/txtPsw"
+                        app:layout_constraintTop_toBottomOf="@id/txtPsw">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                            android:id="@+id/edtPsw"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="@string/enter_price"
+                            android:inputType="numberDecimal"
+                            android:onTextChanged="@{vm::itemPriceChanged}"
+                            android:text="@={vm.itemPrice}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp" />
+                    </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtCat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/select_your_category"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llUpload" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCat"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_category" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/enter_description"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerViewCat" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                    android:id="@+id/edtDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/bg_reason_editbox"
+                    android:gravity="start"
+                    android:hint="@string/enter_menu_description"
+                    android:inputType="textMultiLine"
+                    android:maxLines="8"
+                    android:minLines="7"
+                    android:onTextChanged="@{vm::itemDescChanged}"
+                    android:padding="@dimen/_10sdp"
+                    android:scrollbars="vertical"
+                    android:text="@={vm.itemDesc}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtDesc" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtAvail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="@string/availability"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/edtDesc"
+                    app:layout_constraintTop_toBottomOf="@id/edtDesc" />
+
+                <LinearLayout
+                    android:id="@+id/llAvail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/gray_assigned_bg"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtAvail">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/cbDelivery"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/ic_unselected"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/delivery"/>
+
+                    <!--<CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/checkbox_layout"
+                        android:checked="false"
+                        android:id="@+id/cbDelivery"
+                        android:gravity="center"
+                        android:onCheckedChanged="@{(compoundButton, checked) ->vm.setIsDeliverable(compoundButton, checked)}"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/delivery"
+                        android:textSize="@dimen/_10ssp" />-->
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/cbEatInside"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="@drawable/ic_unselected"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/eat_inside"/>
+
+                    <!--<CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:button="@drawable/checkbox_layout"
+                        android:checked="false"
+                        android:id="@+id/cbEatInside"
+                        android:gravity="center"
+                        android:onCheckedChanged="@{(compoundButton, checked) ->vm.setIsEatInside(compoundButton, checked)}"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/eat_inside"
+                        android:textSize="@dimen/_10ssp" />-->
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llAvail" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clAddItem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/gray_assigned_bg"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerItem">
+
+                    <LinearLayout
+                        android:id="@+id/llAddItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/white_corner_radius_button"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:text="@string/add_custom"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_8ssp" />
+
+                        <ImageView
+                            android:id="@+id/icAddItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:src="@drawable/ic_add_cat" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:id="@+id/btnAddItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:background="@drawable/login_button_selector"
+                    android:paddingHorizontal="@dimen/_18sdp"
+                    android:text="@string/add_item"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clAddItem" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

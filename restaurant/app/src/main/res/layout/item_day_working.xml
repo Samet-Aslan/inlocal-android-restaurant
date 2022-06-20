@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.commonmodel.OpeningHoursItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g1"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".3" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvTuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:gravity="center"
+            android:text="@{data.weekdayName}"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvTuesdayTime"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:gravity="center"
+            android:text=": 10AM - 9PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toEndOf="@+id/g1"
+            app:layout_constraintTop_toTopOf="@+id/tvTuesday" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:id="@+id/viewLine"
+            android:background="@color/gray5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTuesdayTime" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

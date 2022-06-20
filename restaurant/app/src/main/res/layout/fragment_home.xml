@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.homefragments.ui.home.view.HomeFragment">
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgCamera"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_home_camera" />
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/logo_name" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutNotification"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/ivNotification"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_notification_read"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/viewDot"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/ivNotification"
+                    app:layout_constraintTop_toTopOf="@+id/ivNotification" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvNotiCount"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_circle_blue_notification"
+                    android:gravity="center"
+                    android:text="10+"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_6sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewDot"
+                    app:layout_constraintEnd_toEndOf="@+id/viewDot"
+                    app:layout_constraintStart_toStartOf="@+id/viewDot"
+                    app:layout_constraintTop_toTopOf="@+id/viewDot" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <FrameLayout
+                android:id="@+id/frameNotification"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone">
+
+
+                <!-- <ImageView
+                     android:layout_width="@dimen/_20sdp"
+                     android:layout_height="@dimen/_20sdp"
+                     android:layout_gravity="center_vertical"
+                     android:src="@drawable/ic_notification" />
+
+                 <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="end"
+                     android:layout_marginEnd="@dimen/_10sdp"
+                     android:background="@drawable/ic_blue_dot"
+                     android:gravity="end"
+                     android:paddingHorizontal="@dimen/_4sdp"
+                     android:paddingVertical="@dimen/_1sdp"
+                     android:text="5"
+                     android:textColor="@color/white"
+                     android:textSize="@dimen/_6ssp" />-->
+            </FrameLayout>
+        </RelativeLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/layoutReferesh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topBar">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nvScroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewUsers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:nestedScrollingEnabled="true"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/item_user_follow" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewFeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvNoRecord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/no_record_found_home"
+            android:textColor="@color/gray5"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtBookingId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_assigned_bg"
+            android:paddingHorizontal="@dimen/_7sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:text="Booking Id : #898989"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtBookingId"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_booking_details_child" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+            android:id="@+id/txtNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="Note to chef :"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerItem" />
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/txtNotes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="Please extra sugar to my coffe I like my steak spicy. Don't server blue rare, serve medium. Share a smile."
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtNote"
+            app:layout_constraintTop_toTopOf="@id/txtNote" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

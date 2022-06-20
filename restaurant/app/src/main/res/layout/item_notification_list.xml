@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.notifications.model.NotificationsModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:background="@drawable/grey_text_bg">
+
+            <ImageView
+                android:id="@+id/ivNOtificationUnread"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:background="@drawable/notification_arc"
+                android:visibility="@{data.readStatus==1?View.GONE:View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/frameIcon"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.inlocal.restaurantapp.custom.GlideRoundedImageView
+                        android:id="@+id/ivPic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:riv_corner_radius="@dimen/_5sdp" />
+                </FrameLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bg_white_rounded"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:text="03.03.2021"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_8sdp"
+                    android:text="9:30 AM"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTime" />
+
+                <LinearLayout
+                    android:id="@+id/llBooking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_2sdp"
+                    app:layout_constraintEnd_toStartOf="@id/txtTime"
+                    app:layout_constraintStart_toEndOf="@id/frameIcon"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.title}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.message}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_9ssp" />
+                    <!--android:visibility="@{(data.subtitle==``)?View.GONE:View.VISIBLE}"-->
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </RelativeLayout>
+
+
+        <!--android:visibility="@{data.unread?View.VISIBLE:View.GONE}"-->
+    </FrameLayout>
+</layout>

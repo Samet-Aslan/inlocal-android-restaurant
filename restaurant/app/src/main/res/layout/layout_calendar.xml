@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutCalendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white_rounded"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layoutTopCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvCalCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/cancel"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+            android:id="@+id/tvCalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/tvCalDone"
+            android:layout_toRightOf="@+id/tvCalCancel"
+            android:gravity="center"
+            android:textSize="@dimen/_13sdp"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/select_date_range" />
+
+        <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+            android:id="@+id/tvCalDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/done"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutTopCalendar" />
+
+    <com.savvi.rangedatepicker.CalendarPickerView
+
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewLine"
+        app:tsquare_dividerColor="@color/transparent"
+        app:tsquare_headerTextColor="@color/custom_header_text"
+        app:tsquare_orientation_horizontal="false" />
+</LinearLayout>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.InputType" />
+
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.auth.login.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.auth.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:src="@drawable/ic_logo_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@color/lightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgLogo">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_30sdp">
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/login_title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtPhoneNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+                <RelativeLayout
+                    android:id="@+id/rlPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/white_corner_radius_button"
+                    android:padding="@dimen/_7sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/txtPhoneNo"
+                    app:layout_constraintTop_toBottomOf="@id/txtPhoneNo">
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/enter_your_registered_phone_number"
+                        android:inputType="textEmailAddress"
+                        android:onTextChanged="@{vm::phoneNumberChanged}"
+                        android:text="@={vm.email}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
+                </RelativeLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtErrorPhoneNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@={vm.emailError}"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_8ssp"
+                    android:visibility="@{vm.emailError==`` ? View.GONE: View.VISIBLE }"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rlPhoneNo" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtPsw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtErrorPhoneNo" />
+
+                <RelativeLayout
+                    android:id="@+id/rlPsw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/white_corner_radius_button"
+                    android:padding="@dimen/_7sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/txtPsw"
+                    app:layout_constraintTop_toBottomOf="@id/txtPsw">
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularEditText
+                        android:id="@+id/edtPsw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/imgShowPsw"
+                        android:background="@null"
+                        android:hint="@string/enter_password"
+                        android:inputType="@{vm.isPswVisible?InputType.TYPE_CLASS_TEXT:(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)}"
+                        android:maxLength="10"
+                        android:onTextChanged="@{vm::passwordChanged}"
+                        android:text="@={vm.password}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <ImageView
+                        android:id="@+id/imgShowPsw"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{(v)->vm.setIsPswVisible(edtPsw)}"
+                        android:src="@{vm.isPswVisible?@drawable/ic_passwor_visible:@drawable/ic_eye_disable}" />
+                </RelativeLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsMediumTextView
+                    android:id="@+id/txtErrorPsw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="@={vm.passwordError}"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_8ssp"
+                    android:visibility="@{vm.passwordError==`` ? View.GONE: View.VISIBLE }"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rlPsw" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:background="@drawable/login_button_selector"
+                    android:enabled="@{vm.email.equals(``)?false:vm.password.equals(``)?false:true}"
+                    android:onClick="@{(v) -> vm.login(v)}"
+                    android:text="@string/login"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtErrorPsw" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

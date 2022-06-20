@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_corner_radius_button"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_20sdp">
+
+            <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:text="@string/logout"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp" />
+
+            <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/are_you_sure_you_want_to_logout"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:id="@+id/btnNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/red_assigned_bg"
+                    android:gravity="center"
+                    android:text="@string/no"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:id="@+id/btnYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/login_button_selector"
+                    android:gravity="center"
+                    android:text="@string/yes"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

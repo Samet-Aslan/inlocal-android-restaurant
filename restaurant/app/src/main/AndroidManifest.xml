@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inlocal.restaurantapp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".app.instance.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.InLocalRestaurantApp"
+        android:usesCleartextTraffic="true">
+
+        <provider
+            android:name=".easyphotopicker.EasyImageFileProvider"
+            android:authorities="${applicationId}.easyphotopicker.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/easyimage_filepaths" />
+        </provider>
+        <activity
+            android:name=".ui.locationmap.MapActivity"
+            android:screenOrientation="sensorPortrait" />
+
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/tab_color" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="Restaurunt" />
+
+        <service android:name=".service.PushMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="true" />
+
+        <activity
+            android:name=".util.SessionDialogActivity"
+            android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".ui.additem.view.AddItemActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.menulistpost.view.MenuListActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.editprofile.view.EditProfileActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.favorites.view.FavoritesActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.addpost.view.AddPostActivity"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.imagepicker.view.ImageChooserActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.imagepicker.view.CameraActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.followers.view.FollowersActivity"
+            android:screenOrientation="sensorPortrait"></activity>
+        <activity
+            android:name=".ui.changepassword.view.ChangePasswordActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.statistics.view.StatisticsActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.myorders.view.MyOrdersActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.bookingdetails.view.BookingDetailsActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.categorylist.view.CateListActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.addcategory.view.AddCategoryActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.notificationssettings.view.NotificationsSettingsActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.home.view.HomeActivity"
+            android:screenOrientation="sensorPortrait"></activity>
+        <activity
+            android:name=".ui.auth.splash.view.SplashActivity"
+            android:screenOrientation="sensorPortrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".ui.auth.login.view.LoginActivity"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.uploadstory.view.UploadStoryActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ui.addaddress.view.AddAdressActivity"
+            android:screenOrientation="sensorPortrait" />
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCxYucM_iuDE9Ea4DaVrG5rBYE-OCIqoog" />
+    </application>
+
+</manifest>

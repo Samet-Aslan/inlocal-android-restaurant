@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.inlocal.restaurantapp.ui.statistics.model.ResponseStatic" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.statistics.view.StatisticsActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.statistics.view.StatisticsActivity">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:id="@+id/layoutTop"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvToday"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@drawable/black_assigned_bg"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/today"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvThisWeek"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:background="@drawable/black_assigned_bg"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/this_week"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvThisMonth"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@drawable/black_assigned_bg"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/this_month"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp" />
+
+                    <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvAllTime"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:background="@drawable/black_assigned_bg"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/all_time"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_customization" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                    android:id="@+id/txtSummary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@string/today_summery"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutTop" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtSales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@string/Sales_Statistics"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtSummary"
+                    app:layout_constraintTop_toBottomOf="@id/txtSummary" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="@id/txtSales"
+                    app:layout_constraintTop_toBottomOf="@id/txtSales">
+
+                    <LinearLayout
+                        android:id="@+id/llFirst"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/blue_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_sales"
+                            android:textColor="@color/white"
+                            android:id="@+id/tvTodaySales"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{`€`+data.sales.today}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/llSecond"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@drawable/blue_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@id/llFirst"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_sales"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{`€`+data.sales.total}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@string/Order_Statistics"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtSummary"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayoutSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="@id/txtOrder"
+                    app:layout_constraintTop_toBottomOf="@id/txtOrder">
+
+                    <LinearLayout
+                        android:id="@+id/todayOrders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/blue_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_orders"
+                            android:textColor="@color/white"
+                            android:id="@+id/tvTodayOrders"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.orders.today+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/totalOrders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@drawable/blue_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@id/todayOrders"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Total_Orders"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.orders.total+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@string/Table_Reservation"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtSummary"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutSecond" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayoutThird"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="@id/txtTable"
+                    app:layout_constraintTop_toBottomOf="@id/txtTable">
+
+                    <LinearLayout
+                        android:id="@+id/todayAccepted"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/green_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_accepted"
+                            android:textColor="@color/white"
+                            android:id="@+id/tvTodayAccepted"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.reservation.today+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/totalAccepted"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@drawable/green_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@id/todayAccepted"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Total_Accepted"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.reservation.total+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayoutFourth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="@id/linearLayoutThird"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutThird">
+
+                    <LinearLayout
+                        android:id="@+id/todayCancelled"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/red_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_cancelled"
+                            android:id="@+id/tvTodayCancelled"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.cancelled.today+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/totalCancelled"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@drawable/red_assigned_bg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@id/todayCancelled"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:layout_constraintWidth_percent="0.48">
+
+                        <com.inlocal.restaurantapp.custom.PoppinsSemiBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Total_Cancelled"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <com.inlocal.restaurantapp.custom.PoppinsBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:text="@{data.cancelled.total+``}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/txtBest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@string/Best_Seller"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/txtSummary"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutFourth" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerBestSeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_20sdp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtBest"
+                    app:spanCount="2"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_best_seller" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.inlocal.restaurantapp.ui.addaddress.viewmodel.AddAddressViewModel" />
+
+        <variable
+            name="addressData"
+            type="com.inlocal.restaurantapp.ui.addaddress.model.AddressData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray1">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/back_toolbar" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray1">
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvHouseNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:text="@string/addres_line_one"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etHouseNo"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldEditText
+                    android:id="@+id/etHouseNo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:afterTextChanged="@{(text) -> vm.onHouseChange(text)}"
+                    android:background="@drawable/bg_rounded_white"
+                    android:gravity="center_vertical"
+                    android:hint="House no, street name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="@={vm.houseNo}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHouseNo" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvHouseError"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Field is Empty"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:visibility="@{vm.houseNoError?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/etHouseNo"
+                    app:layout_constraintStart_toStartOf="@+id/etHouseNo"
+                    app:layout_constraintTop_toBottomOf="@+id/etHouseNo" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvLandMark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:text="@string/addres_line_two"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etHouseNo"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHouseError" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldEditText
+                    android:id="@+id/etLandMark"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:afterTextChanged="@{(text) -> vm.onLandMarkChange(text)}"
+                    android:background="@drawable/bg_rounded_white"
+                    android:gravity="center_vertical"
+                    android:hint="@string/addres_line_two"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@={vm.landMark}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLandMark" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvLandMarkError"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Field is Empty"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:visibility="@{vm.landMarkError?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/etLandMark"
+                    app:layout_constraintStart_toStartOf="@+id/etLandMark"
+                    app:layout_constraintTop_toBottomOf="@+id/etLandMark" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvZipCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:text="Zip Code"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etLandMark"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLandMarkError" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldEditText
+                    android:id="@+id/etZipCode"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:afterTextChanged="@{(text) -> vm.onZipCodeChange(text)}"
+                    android:background="@drawable/bg_rounded_white"
+                    android:digits="1234567890"
+                    android:gravity="center_vertical"
+                    android:hint="ZipCode"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:text="@={vm.zipcode}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvZipCode" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvZipCodeError"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Enter valid zip code"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:visibility="@{vm.zipcodeError?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/etZipCode"
+                    app:layout_constraintStart_toStartOf="@+id/etZipCode"
+                    app:layout_constraintTop_toBottomOf="@+id/etZipCode" />
+
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:text="City"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etZipCode"
+                    app:layout_constraintTop_toBottomOf="@+id/tvZipCodeError" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsSemiBoldEditText
+                    android:id="@+id/etCity"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:afterTextChanged="@{(text) -> vm.onCityChange(text)}"
+                    android:background="@drawable/bg_rounded_white"
+                    android:gravity="center_vertical"
+                    android:hint="City"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@={vm.city}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCity" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvCityError"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Field is empty"
+                    android:textColor="@color/red"
+                    android:textSize="12sp"
+                    android:visibility="@{vm.cityError?View.VISIBLE:View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/etLandMark"
+                    app:layout_constraintStart_toStartOf="@+id/etCity"
+                    app:layout_constraintTop_toBottomOf="@+id/etCity" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularTextView
+                    android:id="@+id/tvCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:text="Country"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/etCity"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCityError" />
+
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ccp_showFlag="true"
+                    app:ccp_showFullName="true"
+                    android:layout_marginTop="10dp"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false"
+                    app:ccpDialog_backgroundColor="@color/white"
+                    app:ccpDialog_textColor="@color/black"
+                    app:ccpDialog_showTitle="true"
+                    app:layout_constraintStart_toStartOf="@+id/tvCountry"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
+
+                <com.inlocal.restaurantapp.custom.PoppinsRegularButton
+                    android:id="@+id/btnSave"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:background="@drawable/bg_blue_rounded"
+                    android:enabled="@{vm.allOk?true:false}"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ccp" />
+
+                <View
+                    android:id="@+id/tvSignIn"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/btnSave"
+                    app:layout_constraintStart_toStartOf="@+id/btnSave"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

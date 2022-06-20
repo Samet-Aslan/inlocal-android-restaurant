@@ -1,0 +1,15 @@
+R_DEF: Internal format may change without notice
+local
+attr? progressCount
+color gray_scale
+color primary
+color progress_max_active
+color progress_primary
+color progress_secondary
+color white
+dimen progress_bar_height
+id back_progress
+id front_progress
+id max_progress
+layout pausable_progress
+styleable StoriesProgressView progressCount
